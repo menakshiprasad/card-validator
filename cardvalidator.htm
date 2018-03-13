@@ -3,7 +3,7 @@
  
 <style>
 img{
-float:right;
+float:left-bottom;
 }
 body {
     background-color: none;
@@ -22,7 +22,7 @@ input[type=number] {
 	align: center;
 	  padding: 12px 20px;
 Height: 40px;
-width: 62%;
+width: 27%;
 }
 button{
     background-color: blue;
@@ -33,17 +33,17 @@ button{
 	text-align: center;
     margin: 4px 2px;
     cursor: pointer;
-	width: 62%;
+	width: 27%;
 }
 #demo1{
-text-align:center;
+text-align:top;
     color: green;
-	font-size: 100%;
+	font-size: 200%;
 }
 #demo2{
-text-align:center;
+text-align:top;
     color: red;
-font-size: 100%;
+font-size: 200%;
 }
 </style>
 </head>
@@ -51,13 +51,20 @@ font-size: 100%;
 <body>
 
 
-
-<p class="b">Please enter a 16 digit number you want to validate and click OK:</p>
+<br>
+<br>
+<p class="b">Enter 16 digits Card Number</p>
 <form method="post">
-<img src="2.jpg" alt="image"  style="width:400px;height:200px;margin-left:50px;margin-top:-70px;">
 <input id="id1" type="number" name="FL" min="1000000000000000" max="9999999999999999" required><br><br>
-<button onclick="return(myFunction());">OK</button>
+<button onclick="return(myFunction());">Validate</button>
 </form>
+<br>
+<br>
+<br>
+<br>
+<br>
+<img src="2.jpg" alt="image"  style="width:400px;height:200px;margin-left:-15px;margin-top:-70px;">
+
 <p id="sumvar"></p>
 <p id="demo1"></p>
 <p id="demo2"></p>
@@ -77,17 +84,17 @@ function myFunction() {
 		var a=document.getElementById("id1").value;
 	
     if (document.getElementById("id1").validity.valueMissing) {
-       alert("number is missing");
+       alert("Card Number is missing");
 	   document.myForm.FL.focus() ;
             return false;
 	   }
 	 if (document.getElementById("id1").validity.rangeOverflow) {
-       alert("you have entered more than 16 digit");
+       alert("You have entered more than 16 digits");
 	   document.myForm.FL.focus() ;
             return false;
 			}
 	 if (document.getElementById("id1").validity.rangeUnderflow) {
-       alert("You have entered less than 16 digit");
+       alert("You have entered less than 16 digits");
 	   document.myForm.FL.focus() ;
        return false;
 	   }
@@ -117,12 +124,12 @@ function myFunction() {
 	
 	//document.getElementById("sumvar").innerHTML = sum;
 	if(sum%10==0){
-		txt = "Card number is Valid";
+		txt = "Card Number is Valid";
 		document.getElementById("demo1").innerHTML = txt;
 		return false;
 			}
 		else{
-		txt = "Card number is not Valid";
+		txt = "Invalid Card Number";
 		document.getElementById("demo2").innerHTML = txt;
 		return false;
 			 }
