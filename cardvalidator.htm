@@ -1,0 +1,137 @@
+<html>
+<head>
+ 
+<style>
+img{
+float:right;
+}
+body {
+    background-color: none;
+	}
+	p.b {
+    text-align:left;
+    color: blue;
+    font-family: Times New Roman;
+	font-size: 200%;
+}
+input[type=number] {
+    background-color: white;
+    background-position: 10px 10px; 
+    background-repeat: no-repeat;
+    padding-left: 1px;
+	align: center;
+	  padding: 12px 20px;
+Height: 40px;
+width: 62%;
+}
+button{
+    background-color: blue;
+    border: none;
+    color: white;
+    padding: 16px 32px;
+    text-decoration: none;
+	text-align: center;
+    margin: 4px 2px;
+    cursor: pointer;
+	width: 62%;
+}
+#demo1{
+text-align:center;
+    color: green;
+	font-size: 100%;
+}
+#demo2{
+text-align:center;
+    color: red;
+font-size: 100%;
+}
+</style>
+</head>
+
+<body>
+
+
+
+<p class="b">Please enter a 16 digit number you want to validate and click OK:</p>
+<form method="post">
+<img src="2.jpg" alt="image"  style="width:400px;height:200px;margin-left:50px;margin-top:-70px;">
+<input id="id1" type="number" name="FL" min="1000000000000000" max="9999999999999999" required><br><br>
+<button onclick="return(myFunction());">OK</button>
+</form>
+<p id="sumvar"></p>
+<p id="demo1"></p>
+<p id="demo2"></p>
+
+<script>
+
+
+function myFunction() {
+
+	var txt=" ";
+	var arr=[];
+	var temp;
+		var i=15;
+		var sum=0;
+		var k=1;
+		var j=0;
+		var a=document.getElementById("id1").value;
+	
+    if (document.getElementById("id1").validity.valueMissing) {
+       alert("number is missing");
+	   document.myForm.FL.focus() ;
+            return false;
+	   }
+	 if (document.getElementById("id1").validity.rangeOverflow) {
+       alert("you have entered more than 16 digit");
+	   document.myForm.FL.focus() ;
+            return false;
+			}
+	 if (document.getElementById("id1").validity.rangeUnderflow) {
+       alert("You have entered less than 16 digit");
+	   document.myForm.FL.focus() ;
+       return false;
+	   }
+	   
+	   
+	   else{
+	while(a>0)
+		{
+			temp=a%10;
+			a=Math.floor(a/10);
+			arr[i]=temp;
+			i--;
+		}
+		
+		while(j<arr.length) {
+			var t=0;
+			var t1=0;
+				
+			arr[j]=arr[j]*2;
+			t=arr[j]%10;
+			t1=Math.floor(arr[j]/10);
+			sum=sum+arr[k]+t+t1;
+			
+			j=j+2;
+			k=k+2;
+		}
+	
+	//document.getElementById("sumvar").innerHTML = sum;
+	if(sum%10==0){
+		txt = "Card number is Valid";
+		document.getElementById("demo1").innerHTML = txt;
+		return false;
+			}
+		else{
+		txt = "Card number is not Valid";
+		document.getElementById("demo2").innerHTML = txt;
+		return false;
+			 }
+			} 
+	}
+	
+
+
+</script>
+
+</body>
+</html>
