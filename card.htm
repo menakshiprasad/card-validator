@@ -1,0 +1,157 @@
+<html>
+<head>
+ 
+<style>
+img{
+float:center;
+}
+body {
+    background-color: none;
+	}
+	p.b {
+    text-align:Center;
+    color: blue;
+    font-family: Times New Roman;
+	font-size: 200%;
+}
+
+p.c {
+    text-align:Center;
+    color: gray;
+    font-family: Times New Roman;
+	font-size: 100%;
+}
+input[type=number] {
+    background-color: white;
+    background-position: 10px 10px; 
+    background-repeat: no-repeat;
+    padding-left: 1px;
+	align: center;
+	  padding: 12px 20px;
+Height: 40px;
+width: 27%;
+}
+button{
+    background-color: blue;
+    border: none;
+    color: white;
+    padding: 16px 32px;
+    text-decoration: none;
+	text-align: center;
+    margin: 4px 2px;
+    cursor: pointer;
+	width: 27%;
+}
+#demo1{
+text-align:Center;
+    color: green;
+	font-size: 200%;
+}
+#demo2{
+text-align:Center;
+    color: red;
+font-size: 200%;
+}
+</style>
+</head>
+
+<body>
+
+
+<br>
+<br>
+<p id="demo1"></p>
+<p id="demo2"></p>
+<p class="b">Enter 16 digits Card Number</p>
+<form method="post" align="center">
+<input id="id1" type="number" name="FL" min="1000000000000000" max="9999999999999999" required><br><br>
+<button onclick="return(myFunction());">Validate</button>
+<br>
+<br>
+<br>
+<br>
+<br>
+<img src="2.png" alt="image"  style="width:350px;height:175px;margin-top:-50px;">
+<br>
+<br>
+<p class="c">Note: We don't save your Card Information!!!</p>
+</form>
+<br>
+
+<p id="sumvar"></p>
+
+<script>
+
+
+function myFunction() {
+document.getElementById("demo1").innerHTML = "";
+document.getElementById("demo2").innerHTML = "";
+	
+	var txt=" ";
+	var arr=[];
+	var temp;
+		var i=15;
+		var sum=0;
+		var k=1;
+		var j=0;
+		var a=document.getElementById("id1").value;
+	
+    if (document.getElementById("id1").validity.valueMissing) {
+       alert("Card Number is missing");
+	   document.myForm.FL.focus() ;
+            return false;
+	   }
+	 if (document.getElementById("id1").validity.rangeOverflow) {
+       alert("You have entered more than 16 digits");
+	   document.myForm.FL.focus() ;
+            return false;
+			}
+	 if (document.getElementById("id1").validity.rangeUnderflow) {
+       alert("You have entered less than 16 digits");
+	   document.myForm.FL.focus() ;
+       return false;
+	   }
+	   
+	   
+	   else{
+	while(a>0)
+		{
+			temp=a%10;
+			a=Math.floor(a/10);
+			arr[i]=temp;
+			i--;
+		}
+		
+		while(j<arr.length) {
+			var t=0;
+			var t1=0;
+				
+			arr[j]=arr[j]*2;
+			t=arr[j]%10;
+			t1=Math.floor(arr[j]/10);
+			sum=sum+arr[k]+t+t1;
+			
+			j=j+2;
+			k=k+2;
+		}
+	
+	//document.getElementById("sumvar").innerHTML = sum;
+	if(sum%10==0){
+		txt = "Card Number is Valid";
+		document.getElementById("demo1").innerHTML = txt;
+		return false;
+			}
+		else{
+		txt = "Invalid Card Number";
+		document.getElementById("demo2").innerHTML = txt;
+		return false;
+			 }
+			} 
+	}
+	
+
+
+</script>
+
+</body>
+</html>
